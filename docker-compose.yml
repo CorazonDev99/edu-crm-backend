@@ -1,0 +1,66 @@
+version: '3'
+services:
+  app:
+    container_name: edu_crm_api
+    build: .
+    ports: 
+      - ${SERVER_PORT}:8080 
+    restart: on-failure
+    environment:
+      - SERVER_PORT=${SERVER_PORT}
+      - ENVIRONMENT=${ENVIRONMENT}
+      - DEFAULT_OFFSET=${DEFAULT_OFFSET}
+      - DEFAULT_LIMIT=${DEFAULT_OFFSET}
+      - POSTGRES_USER=${POSTGRES_USER}  
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=${POSTGRES_DB}
+      - POSTGRES_HOST=${POSTGRES_HOST} 
+      - POSTGRES_PORT=${POSTGRES_PORT} 
+      - MINIO_ACCESS_KEY_ID=${MINIO_ACCESS_KEY_ID}
+      - MINIO_SECRET_KEY=${MINIO_SECRET_KEY}
+      - MINIO_ENDPOINT=${MINIO_ENDPOINT}
+      - MINIO_BUCKET_NAME=${MINIO_BUCKET_NAME}
+      - MINIO_LOCATION=${MINIO_LOCATION}
+      - MINIO_HOST=${MINIO_HOST}
+      - MINIO_PORT=${MINIO_HOST}
+      - MINIO_USE_SLL=false
+      - CTX_TIMEOUT=${CTX_TIMEOUT}
+      - CASBIN_CONFIG_PATH=${CASBIN_CONFIG_PATH}
+      - MIDDLEWARE_ROLES_PATH=${MIDDLEWARE_ROLES_PATH}
+      - SIGNIN_KEY=${SIGNIN_KEY}
+      - SERVER_READ_TIMEOUT=${SERVER_READ_TIMEOUT}
+      - JWT_SECRET_KEY=${JWT_SECRET_KEY}
+      - JWT_SECRET_KEY_EXPIRE_MINUTES_COUNT=604800
+      - JWT_REFRESH_KEY=${JWT_REFRESH_KEY}
+      - JWT_REFRESH_KEY_EXPIRE_HOURS_COUNT=604800
+      - HASH_KEY=${HASH_KEY}
+    volumes:
+      - api:/usr/src/app/
+    depends_on:
+      - crm-db         
+    networks:
+      - crm-network
+
+  crm-db:
+    container_name: crm-database
+    image: postgres:latest
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER}  
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=${POSTGRES_DB}
+      - DATABASE_HOST=${POSTGRES_HOST} 
+    ports:
+      - '${POSTGRES_PORT}:5432'
+    volumes:
+      - database_postgres:/var/lib/postgresql/data
+    networks:
+      - crm-network
+volumes:
+  api:
+  database_postgres:
+
+# Networks to be created to facilitate communication between containers
+networks:
+  crm-network:
+    external: true
+    driver: bridge

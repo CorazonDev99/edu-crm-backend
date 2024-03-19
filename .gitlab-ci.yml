@@ -1,0 +1,56 @@
+stages:
+  - build
+  - deploy-prod
+  - deploy-test
+before_script:
+  - apk add --update update docker openrc && py-pip && pip  install docker-compose
+  - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN  registry.gitlab.com
+  - docker info
+build:
+  stage: build
+  image: docker:20.10.16
+  services:
+    - docker:20.10.16-dind
+  script:
+    - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN registry.gitlab.com
+    - docker build -t ${CI_REGISTRY_IMAGE}:${CI_COMMIT_REF_NAME} .
+    - docker push ${CI_REGISTRY_IMAGE}:${CI_COMMIT_REF_NAME}
+  only:
+    - main
+    - staging
+
+deploy-prod:
+  stage: deploy-prod
+  before_script:
+    - apk update
+    - apk --no-cache --update upgrade && apk --no-cache add ca-certificates
+    - rm -rf /var/cache/apk/*
+    - apk add --no-cache openssh #&& openssh-client bash
+    - apk add --no-cache openssh-client ca-certificates bash
+    - mkdir -p ~/.ssh
+    - echo "$SSH_PRIVATE_KEY" | tr -d '\r' > ~/.ssh/id_rsa
+    - chmod 400 $SSH_PRIVATE_KEY
+  script:
+      - apk add --update --no-cache openssh
+      - ssh -o StrictHostKeyChecking=no -i $SSH_PRIVATE_KEY $USER@$PROD_SERVER_IP "docker login -u '$CI_REGISTRY_USER' -p '$CI_REGISTRY_PASSWORD' $CI_REGISTRY && docker pull '${CI_REGISTRY_IMAGE}:${CI_COMMIT_REF_NAME}'"
+      - ssh -o StrictHostKeyChecking=no -i $SSH_PRIVATE_KEY $USER@$PROD_SERVER_IP "docker stop crm-backend || true && docker rm crm-backend || true && docker run -p 4040:9090 --name crm-backend --env-file /var/www/.crm.env --network=crm-network -v /var/www/.crm.env:/app/.env -d registry.gitlab.com/1itech_company_uz/internal/edu_crm/edu_crm_backend:$CI_COMMIT_BRANCH"
+  only:
+    - main
+
+deploy-test:
+  stage: deploy-test
+  before_script:
+    - apk update
+    - apk --no-cache --update upgrade && apk --no-cache add ca-certificates
+    - rm -rf /var/cache/apk/*
+    - apk add --no-cache openssh #&& openssh-client bash
+    - apk add --no-cache openssh-client ca-certificates bash
+    - mkdir -p ~/.ssh
+    - echo "$SSH_PRIVATE_KEY" | tr -d '\r' > ~/.ssh/id_rsa
+    - chmod 400 $SSH_PRIVATE_KEY
+  script:
+      - apk add --update --no-cache openssh
+      - ssh -o StrictHostKeyChecking=no -i $SSH_PRIVATE_KEY $USER@$PROD_SERVER_IP "docker login -u '$CI_REGISTRY_USER' -p '$CI_REGISTRY_PASSWORD' $CI_REGISTRY && docker pull '${CI_REGISTRY_IMAGE}:${CI_COMMIT_REF_NAME}'"
+      - ssh -o StrictHostKeyChecking=no -i $SSH_PRIVATE_KEY $USER@$PROD_SERVER_IP "docker stop crm-backend-test || true && docker rm crm-backend-test || true && docker run -p 5050:9090 --name crm-backend-test --env-file /var/www/.crm.env.test --network=crm-network -v /var/www/.crm.env.test:/app/.env -d registry.gitlab.com/1itech_company_uz/internal/edu_crm/edu_crm_backend:$CI_COMMIT_BRANCH"
+  only:
+    - staging

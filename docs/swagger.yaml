@@ -1,0 +1,2922 @@
+definitions:
+  model.CreateBoard:
+    properties:
+      title:
+        type: string
+    type: object
+  model.CreateCourse:
+    properties:
+      description:
+        type: string
+      duration:
+        type: string
+      lessonDuration:
+        type: string
+      photo:
+        type: string
+      price:
+        type: integer
+      status:
+        type: boolean
+      title:
+        type: string
+    type: object
+  model.CreateGroup:
+    properties:
+      comment:
+        type: string
+      courseID:
+        type: string
+      description:
+        type: string
+      eduDays:
+        type: string
+      endDate:
+        type: string
+      lessonStartTime:
+        type: string
+      price:
+        type: integer
+      roomID:
+        type: string
+      startDate:
+        type: string
+      status:
+        type: boolean
+      teacherID:
+        type: string
+      title:
+        type: string
+    type: object
+  model.CreateLid:
+    properties:
+      comment:
+        type: string
+      fullName:
+        type: string
+      listID:
+        type: string
+      location:
+        type: string
+      phoneNumber:
+        type: string
+    type: object
+  model.CreateList:
+    properties:
+      boardID:
+        type: string
+      title:
+        type: string
+    type: object
+  model.CreatePermission:
+    properties:
+      description:
+        type: string
+      method:
+        type: string
+      tag:
+        type: string
+      title:
+        type: string
+      url:
+        type: string
+    type: object
+  model.CreateRole:
+    properties:
+      description:
+        type: string
+      document:
+        type: string
+      title:
+        type: string
+    type: object
+  model.CreateRoom:
+    properties:
+      closeTime:
+        type: string
+      description:
+        type: string
+      openTime:
+        type: string
+      roomNumber:
+        type: integer
+      title:
+        type: string
+    type: object
+  model.CreateSettings:
+    properties:
+      companyLogo:
+        type: string
+      companyPhone:
+        type: string
+      companyTitle:
+        type: string
+      instructionFile:
+        type: string
+      openDate:
+        type: string
+      siteColor:
+        type: string
+      siteEnterLogo:
+        type: string
+    type: object
+  model.CreateUser:
+    properties:
+      addedDate:
+        type: string
+      birthdayDate:
+        type: string
+      extraData:
+        additionalProperties: true
+        type: object
+      fullName:
+        type: string
+      password:
+        type: string
+      phoneNumber:
+        type: string
+      photo:
+        type: string
+      roleID:
+        type: string
+    type: object
+  model.MoveLid:
+    properties:
+      from:
+        type: string
+      to:
+        type: string
+    type: object
+  model.MoveList:
+    properties:
+      from:
+        type: string
+      to:
+        type: string
+    type: object
+  model.SignInUser:
+    properties:
+      password:
+        default: EduCRM$007Boss
+        type: string
+      phoneNumber:
+        default: "+998901234567"
+        type: string
+    type: object
+  model.UpdateBoard:
+    properties:
+      title:
+        type: string
+    type: object
+  model.UpdateCourse:
+    properties:
+      description:
+        type: string
+      duration:
+        type: string
+      lessonDuration:
+        type: string
+      photo:
+        type: string
+      price:
+        type: integer
+      status:
+        type: boolean
+      title:
+        type: string
+    type: object
+  model.UpdateGroup:
+    properties:
+      comment:
+        type: string
+      courseID:
+        type: string
+      description:
+        type: string
+      eduDays:
+        type: string
+      endDate:
+        type: string
+      lessonStartTime:
+        type: string
+      price:
+        type: integer
+      roomID:
+        type: string
+      startDate:
+        type: string
+      status:
+        type: boolean
+      teacherID:
+        type: string
+      title:
+        type: string
+    type: object
+  model.UpdateLid:
+    properties:
+      comment:
+        type: string
+      fullName:
+        type: string
+      listID:
+        type: string
+      location:
+        type: string
+      phoneNumber:
+        type: string
+    type: object
+  model.UpdateList:
+    properties:
+      boardID:
+        type: string
+      title:
+        type: string
+    type: object
+  model.UpdatePermission:
+    properties:
+      description:
+        type: string
+      method:
+        type: string
+      tag:
+        type: string
+      title:
+        type: string
+      url:
+        type: string
+    type: object
+  model.UpdateRole:
+    properties:
+      description:
+        type: string
+      document:
+        type: string
+      title:
+        type: string
+    type: object
+  model.UpdateRoom:
+    properties:
+      closeTime:
+        type: string
+      description:
+        type: string
+      openTime:
+        type: string
+      roomNumber:
+        type: integer
+      title:
+        type: string
+    type: object
+  model.UpdateUser:
+    properties:
+      addedDate:
+        type: string
+      birthdayDate:
+        type: string
+      extraDta:
+        additionalProperties: true
+        type: object
+      fullName:
+        type: string
+      password:
+        type: string
+      phoneNumber:
+        type: string
+      photo:
+        type: string
+      roleID:
+        type: string
+    type: object
+  model.UserPassword:
+    properties:
+      password:
+        type: string
+    type: object
+  response.ResponseModel:
+    properties:
+      description:
+        type: string
+      error:
+        type: string
+      snapData: {}
+      status:
+        type: string
+    type: object
+host: gitlab.com/edu-crm
+info:
+  contact:
+    email: phapp0224mb@gmail.com
+    name: Bakhodir Yashin Mansur
+  description: API Server for EduCRM Application
+  termsOfService: gitlab.com/edu-crm
+  title: EduCRM
+  version: "1.0"
+paths:
+  /api/v1/auth/logout:
+    get:
+      consumes:
+      - application/json
+      description: Log Out Auth Refresh Token
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+      security:
+      - ApiKeyAuth: []
+      summary: Log Out
+      tags:
+      - Token
+  /api/v1/auth/permission/{id}:
+    get:
+      consumes:
+      - application/json
+      description: Get Permission
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+      security:
+      - ApiKeyAuth: []
+      summary: Get Permission
+      tags:
+      - Permission
+  /api/v1/auth/permission/create:
+    post:
+      consumes:
+      - application/json
+      description: Create Permission
+      parameters:
+      - description: Create Permission
+        in: body
+        name: create
+        required: true
+        schema:
+          $ref: '#/definitions/model.CreatePermission'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+      security:
+      - ApiKeyAuth: []
+      summary: Create Permission
+      tags:
+      - Permission
+  /api/v1/auth/permission/delete/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete Permission
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+      security:
+      - ApiKeyAuth: []
+      summary: Delete Permission
+      tags:
+      - Permission
+  /api/v1/auth/permission/list:
+    get:
+      consumes:
+      - application/json
+      description: Get Permission List
+      parameters:
+      - default: 10
+        description: pageSize
+        in: query
+        name: pageSize
+        required: true
+        type: integer
+      - default: 1
+        description: page
+        in: query
+        name: page
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+      security:
+      - ApiKeyAuth: []
+      summary: Get Permission List
+      tags:
+      - Permission
+  /api/v1/auth/permission/update/{id}:
+    put:
+      consumes:
+      - application/json
+      description: Update Permission
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Update Permission
+        in: body
+        name: update
+        required: true
+        schema:
+          $ref: '#/definitions/model.UpdatePermission'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+      security:
+      - ApiKeyAuth: []
+      summary: Update Permission
+      tags:
+      - Permission
+  /api/v1/auth/refresh-token:
+    get:
+      consumes:
+      - application/json
+      description: RefreshToken Auth Refresh Token
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+      security:
+      - ApiKeyAuth: []
+      summary: RefreshToken
+      tags:
+      - Token
+  /api/v1/auth/role/{id}:
+    get:
+      consumes:
+      - application/json
+      description: Get Role
+      parameters:
+      - description: Role ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+      security:
+      - ApiKeyAuth: []
+      summary: Get Role
+      tags:
+      - Role
+  /api/v1/auth/role/create:
+    post:
+      consumes:
+      - application/json
+      description: Create Role
+      parameters:
+      - description: Create Role
+        in: body
+        name: create
+        required: true
+        schema:
+          $ref: '#/definitions/model.CreateRole'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+      security:
+      - ApiKeyAuth: []
+      summary: Create Role
+      tags:
+      - Role
+  /api/v1/auth/role/delete/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete Role
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+      security:
+      - ApiKeyAuth: []
+      summary: Delete Role
+      tags:
+      - Role
+  /api/v1/auth/role/list:
+    get:
+      consumes:
+      - application/json
+      description: Get Role List
+      parameters:
+      - default: 10
+        description: pageSize
+        in: query
+        name: pageSize
+        required: true
+        type: integer
+      - default: 1
+        description: page
+        in: query
+        name: page
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+      security:
+      - ApiKeyAuth: []
+      summary: Get Role List
+      tags:
+      - Role
+  /api/v1/auth/role/title:
+    get:
+      consumes:
+      - application/json
+      description: Get Role
+      parameters:
+      - description: Role title
+        in: query
+        name: title
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+      security:
+      - ApiKeyAuth: []
+      summary: Get Role
+      tags:
+      - Role
+  /api/v1/auth/role/update/{id}:
+    put:
+      consumes:
+      - application/json
+      description: Update Role
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Update Role
+        in: body
+        name: update
+        required: true
+        schema:
+          $ref: '#/definitions/model.UpdateRole'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+      security:
+      - ApiKeyAuth: []
+      summary: Update Role
+      tags:
+      - Role
+  /api/v1/board/{id}:
+    get:
+      consumes:
+      - application/json
+      description: Get Board
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+      security:
+      - ApiKeyAuth: []
+      summary: Get Board
+      tags:
+      - Board
+  /api/v1/board/create:
+    post:
+      consumes:
+      - application/json
+      description: Create Board
+      parameters:
+      - description: Create Board
+        in: body
+        name: create
+        required: true
+        schema:
+          $ref: '#/definitions/model.CreateBoard'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+      security:
+      - ApiKeyAuth: []
+      summary: Create Board
+      tags:
+      - Board
+  /api/v1/board/delete/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete Board
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+      security:
+      - ApiKeyAuth: []
+      summary: Delete Board
+      tags:
+      - Board
+  /api/v1/board/list:
+    get:
+      consumes:
+      - application/json
+      description: Get Board List
+      parameters:
+      - default: 10
+        description: pageSize
+        in: query
+        name: pageSize
+        required: true
+        type: integer
+      - default: 1
+        description: page
+        in: query
+        name: page
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+      security:
+      - ApiKeyAuth: []
+      summary: Get Board List
+      tags:
+      - Board
+  /api/v1/board/update/{id}:
+    put:
+      consumes:
+      - application/json
+      description: Update Board
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Update Board
+        in: body
+        name: update
+        required: true
+        schema:
+          $ref: '#/definitions/model.UpdateBoard'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+      security:
+      - ApiKeyAuth: []
+      summary: Update Board
+      tags:
+      - Board
+  /api/v1/course/{id}:
+    get:
+      consumes:
+      - application/json
+      description: Get Course
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+      security:
+      - ApiKeyAuth: []
+      summary: Get Course
+      tags:
+      - Course
+  /api/v1/course/create:
+    post:
+      consumes:
+      - application/json
+      description: Create Course
+      parameters:
+      - description: Create Course
+        in: body
+        name: create
+        required: true
+        schema:
+          $ref: '#/definitions/model.CreateCourse'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+      security:
+      - ApiKeyAuth: []
+      summary: Create Course
+      tags:
+      - Course
+  /api/v1/course/delete/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete Course
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+      security:
+      - ApiKeyAuth: []
+      summary: Delete Course
+      tags:
+      - Course
+  /api/v1/course/group/{id}:
+    get:
+      consumes:
+      - application/json
+      description: Get Course List
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: string
+      - default: 10
+        description: pageSize
+        in: query
+        name: pageSize
+        required: true
+        type: integer
+      - default: 1
+        description: page
+        in: query
+        name: page
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+      security:
+      - ApiKeyAuth: []
+      summary: Get Course List
+      tags:
+      - Course
+  /api/v1/course/list:
+    get:
+      consumes:
+      - application/json
+      description: Get Course List
+      parameters:
+      - default: 10
+        description: pageSize
+        in: query
+        name: pageSize
+        required: true
+        type: integer
+      - default: 1
+        description: page
+        in: query
+        name: page
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+      security:
+      - ApiKeyAuth: []
+      summary: Get Course List
+      tags:
+      - Course
+  /api/v1/course/update/{id}:
+    put:
+      consumes:
+      - application/json
+      description: Update Course
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Update Course
+        in: body
+        name: update
+        required: true
+        schema:
+          $ref: '#/definitions/model.UpdateCourse'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+      security:
+      - ApiKeyAuth: []
+      summary: Update Course
+      tags:
+      - Course
+  /api/v1/group/{id}:
+    get:
+      consumes:
+      - application/json
+      description: Get Group
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+      security:
+      - ApiKeyAuth: []
+      summary: Get Group
+      tags:
+      - Group
+  /api/v1/group/create:
+    post:
+      consumes:
+      - application/json
+      description: Create Group
+      parameters:
+      - description: Create Group
+        in: body
+        name: create
+        required: true
+        schema:
+          $ref: '#/definitions/model.CreateGroup'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+      security:
+      - ApiKeyAuth: []
+      summary: Create Group
+      tags:
+      - Group
+  /api/v1/group/delete-learner:
+    delete:
+      consumes:
+      - application/json
+      description: Delete User From Group
+      parameters:
+      - description: Learner ID
+        in: query
+        name: learnerId
+        required: true
+        type: string
+      - description: Group ID
+        in: query
+        name: groupId
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+      security:
+      - ApiKeyAuth: []
+      summary: Delete User From Group
+      tags:
+      - User
+  /api/v1/group/delete/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete Group
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+      security:
+      - ApiKeyAuth: []
+      summary: Delete Group
+      tags:
+      - Group
+  /api/v1/group/list:
+    get:
+      consumes:
+      - application/json
+      description: Get Group List
+      parameters:
+      - default: 10
+        description: pageSize
+        in: query
+        name: pageSize
+        required: true
+        type: integer
+      - default: 1
+        description: page
+        in: query
+        name: page
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+      security:
+      - ApiKeyAuth: []
+      summary: Get Group List
+      tags:
+      - Group
+  /api/v1/group/student/list/{id}:
+    get:
+      consumes:
+      - application/json
+      description: Get Group
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+      security:
+      - ApiKeyAuth: []
+      summary: Get Group
+      tags:
+      - Group
+  /api/v1/group/update/{id}:
+    put:
+      consumes:
+      - application/json
+      description: Update Group
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Update Group
+        in: body
+        name: update
+        required: true
+        schema:
+          $ref: '#/definitions/model.UpdateGroup'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+      security:
+      - ApiKeyAuth: []
+      summary: Update Group
+      tags:
+      - Group
+  /api/v1/lid/{id}:
+    get:
+      consumes:
+      - application/json
+      description: Get Lid
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+      security:
+      - ApiKeyAuth: []
+      summary: Get Lid
+      tags:
+      - Lid
+  /api/v1/lid/create:
+    post:
+      consumes:
+      - application/json
+      description: Create Lid
+      parameters:
+      - description: Create Lid
+        in: body
+        name: create
+        required: true
+        schema:
+          $ref: '#/definitions/model.CreateLid'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+      security:
+      - ApiKeyAuth: []
+      summary: Create Lid
+      tags:
+      - Lid
+  /api/v1/lid/delete/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete Lid
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+      security:
+      - ApiKeyAuth: []
+      summary: Delete Lid
+      tags:
+      - Lid
+  /api/v1/lid/list:
+    get:
+      consumes:
+      - application/json
+      description: Get Lid List
+      parameters:
+      - default: 10
+        description: pageSize
+        in: query
+        name: pageSize
+        required: true
+        type: integer
+      - default: 1
+        description: page
+        in: query
+        name: page
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+      security:
+      - ApiKeyAuth: []
+      summary: Get Lid List
+      tags:
+      - Lid
+  /api/v1/lid/move/{id}:
+    put:
+      consumes:
+      - application/json
+      description: Move Lid
+      parameters:
+      - description: lid
+        in: body
+        name: lid
+        required: true
+        schema:
+          $ref: '#/definitions/model.MoveLid'
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+      security:
+      - ApiKeyAuth: []
+      summary: Move Lid
+      tags:
+      - Lid
+  /api/v1/lid/replace:
+    get:
+      consumes:
+      - application/json
+      description: Replace Lid
+      parameters:
+      - description: lid
+        in: body
+        name: lid
+        required: true
+        schema:
+          $ref: '#/definitions/model.MoveLid'
+      - description: Create Lid
+        in: body
+        name: lid
+        required: true
+        schema:
+          $ref: '#/definitions/model.MoveLid'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+      security:
+      - ApiKeyAuth: []
+      summary: Replace Lid
+      tags:
+      - Lid
+  /api/v1/lid/update/{id}:
+    put:
+      consumes:
+      - application/json
+      description: Update Lid
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Update Lid
+        in: body
+        name: update
+        required: true
+        schema:
+          $ref: '#/definitions/model.UpdateLid'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+      security:
+      - ApiKeyAuth: []
+      summary: Update Lid
+      tags:
+      - Lid
+  /api/v1/list/{id}:
+    get:
+      consumes:
+      - application/json
+      description: Get List
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+      security:
+      - ApiKeyAuth: []
+      summary: Get List
+      tags:
+      - List
+  /api/v1/list/create:
+    post:
+      consumes:
+      - application/json
+      description: Create List
+      parameters:
+      - description: Create List
+        in: body
+        name: create
+        required: true
+        schema:
+          $ref: '#/definitions/model.CreateList'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+      security:
+      - ApiKeyAuth: []
+      summary: Create List
+      tags:
+      - List
+  /api/v1/list/delete/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete List
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+      security:
+      - ApiKeyAuth: []
+      summary: Delete List
+      tags:
+      - List
+  /api/v1/list/list:
+    get:
+      consumes:
+      - application/json
+      description: Get List List
+      parameters:
+      - default: 10
+        description: pageSize
+        in: query
+        name: pageSize
+        required: true
+        type: integer
+      - default: 1
+        description: page
+        in: query
+        name: page
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+      security:
+      - ApiKeyAuth: []
+      summary: Get List List
+      tags:
+      - List
+  /api/v1/list/move/{id}:
+    put:
+      consumes:
+      - application/json
+      description: Move Lid
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Move Lid
+        in: body
+        name: move
+        required: true
+        schema:
+          $ref: '#/definitions/model.MoveList'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+      security:
+      - ApiKeyAuth: []
+      summary: Move Lid
+      tags:
+      - List
+  /api/v1/list/update/{id}:
+    put:
+      consumes:
+      - application/json
+      description: Update List
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Update List
+        in: body
+        name: update
+        required: true
+        schema:
+          $ref: '#/definitions/model.UpdateList'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+      security:
+      - ApiKeyAuth: []
+      summary: Update List
+      tags:
+      - List
+  /api/v1/minio/upload-doc:
+    post:
+      consumes:
+      - application/json
+      - multipart/form-data
+      description: Upload doc
+      parameters:
+      - description: file
+        in: formData
+        name: file
+        required: true
+        type: file
+      produces:
+      - application/octet-stream
+      - application/msword
+      - application/vnd.openxmlformats-officedocument.wordprocessingml.document
+      - image/jpg
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+      security:
+      - ApiKeyAuth: []
+      tags:
+      - General
+  /api/v1/minio/upload-image:
+    post:
+      consumes:
+      - application/json
+      - multipart/form-data
+      description: Upload Image
+      parameters:
+      - description: file
+        in: formData
+        name: file
+        required: true
+        type: file
+      produces:
+      - application/octet-stream
+      - image/png
+      - image/jpeg
+      - image/jpg
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+      security:
+      - ApiKeyAuth: []
+      tags:
+      - General
+  /api/v1/minio/upload-images:
+    post:
+      consumes:
+      - application/json
+      - multipart/form-data
+      description: Upload Images
+      parameters:
+      - description: files
+        in: formData
+        name: files
+        required: true
+        type: file
+      produces:
+      - application/octet-stream
+      - image/png
+      - image/jpeg
+      - image/jpg
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+      security:
+      - ApiKeyAuth: []
+      tags:
+      - General
+  /api/v1/room/{id}:
+    get:
+      consumes:
+      - application/json
+      description: Get Room
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+      security:
+      - ApiKeyAuth: []
+      summary: Get Room
+      tags:
+      - Room
+  /api/v1/room/create:
+    post:
+      consumes:
+      - application/json
+      description: Create Room
+      parameters:
+      - description: Create Room
+        in: body
+        name: create
+        required: true
+        schema:
+          $ref: '#/definitions/model.CreateRoom'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+      security:
+      - ApiKeyAuth: []
+      summary: Create Room
+      tags:
+      - Room
+  /api/v1/room/delete/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete Room
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+      security:
+      - ApiKeyAuth: []
+      summary: Delete Room
+      tags:
+      - Room
+  /api/v1/room/group/{id}:
+    get:
+      consumes:
+      - application/json
+      description: Get Room group
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: string
+      - default: 10
+        description: pageSize
+        in: query
+        name: pageSize
+        required: true
+        type: integer
+      - default: 1
+        description: page
+        in: query
+        name: page
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+      security:
+      - ApiKeyAuth: []
+      summary: Get Room group
+      tags:
+      - Room
+  /api/v1/room/list:
+    get:
+      consumes:
+      - application/json
+      description: Get Room List
+      parameters:
+      - default: 10
+        description: pageSize
+        in: query
+        name: pageSize
+        required: true
+        type: integer
+      - default: 1
+        description: page
+        in: query
+        name: page
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+      security:
+      - ApiKeyAuth: []
+      summary: Get Room List
+      tags:
+      - Room
+  /api/v1/room/update/{id}:
+    put:
+      consumes:
+      - application/json
+      description: Update Room
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Update Room
+        in: body
+        name: update
+        required: true
+        schema:
+          $ref: '#/definitions/model.UpdateRoom'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+      security:
+      - ApiKeyAuth: []
+      summary: Update Room
+      tags:
+      - Room
+  /api/v1/settings/get:
+    get:
+      consumes:
+      - application/json
+      description: Get Settings
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+      summary: Get Settings
+      tags:
+      - Settings
+  /api/v1/settings/upsert:
+    post:
+      consumes:
+      - application/json
+      description: Create or Update Settings
+      parameters:
+      - description: Create,Update,Delete Settings
+        in: body
+        name: create
+        required: true
+        schema:
+          $ref: '#/definitions/model.CreateSettings'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+      security:
+      - ApiKeyAuth: []
+      summary: Create or Update Settings
+      tags:
+      - Settings
+  /api/v1/student/course/list/{id}:
+    get:
+      consumes:
+      - application/json
+      description: Get Student Group
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: string
+      - default: 10
+        description: pageSize
+        in: query
+        name: pageSize
+        required: true
+        type: integer
+      - default: 1
+        description: page
+        in: query
+        name: page
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+      security:
+      - ApiKeyAuth: []
+      summary: Get Student Group
+      tags:
+      - Student
+  /api/v1/student/group/list/{id}:
+    get:
+      consumes:
+      - application/json
+      description: Get Student Group
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: string
+      - default: 10
+        description: pageSize
+        in: query
+        name: pageSize
+        required: true
+        type: integer
+      - default: 1
+        description: page
+        in: query
+        name: page
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+      security:
+      - ApiKeyAuth: []
+      summary: Get Student Group
+      tags:
+      - Student
+  /api/v1/teacher/course/list/{id}:
+    get:
+      consumes:
+      - application/json
+      description: Get Teacher Group
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: string
+      - default: 10
+        description: pageSize
+        in: query
+        name: pageSize
+        required: true
+        type: integer
+      - default: 1
+        description: page
+        in: query
+        name: page
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+      security:
+      - ApiKeyAuth: []
+      summary: Get Teacher Group
+      tags:
+      - Teacher
+  /api/v1/teacher/group/list/{id}:
+    get:
+      consumes:
+      - application/json
+      description: Get Teacher Group
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: string
+      - default: 10
+        description: pageSize
+        in: query
+        name: pageSize
+        required: true
+        type: integer
+      - default: 1
+        description: page
+        in: query
+        name: page
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+      security:
+      - ApiKeyAuth: []
+      summary: Get Teacher Group
+      tags:
+      - Teacher
+  /api/v1/user/{id}:
+    get:
+      consumes:
+      - application/json
+      description: Get User
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+      security:
+      - ApiKeyAuth: []
+      summary: Get User
+      tags:
+      - User
+  /api/v1/user/create:
+    post:
+      consumes:
+      - application/json
+      description: Create User
+      parameters:
+      - description: Create User
+        in: body
+        name: create
+        required: true
+        schema:
+          $ref: '#/definitions/model.CreateUser'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+      security:
+      - ApiKeyAuth: []
+      summary: Create User
+      tags:
+      - User
+  /api/v1/user/delete/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete User
+      parameters:
+      - description: User ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+      security:
+      - ApiKeyAuth: []
+      summary: Delete User
+      tags:
+      - User
+  /api/v1/user/list:
+    get:
+      consumes:
+      - application/json
+      description: Get User List
+      parameters:
+      - default: 10
+        description: pageSize
+        in: query
+        name: pageSize
+        required: true
+        type: integer
+      - default: 1
+        description: page
+        in: query
+        name: page
+        required: true
+        type: integer
+      - description: 'Role : all.  get all user'
+        in: query
+        name: role
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+      security:
+      - ApiKeyAuth: []
+      summary: Get User List
+      tags:
+      - User
+  /api/v1/user/me:
+    get:
+      consumes:
+      - application/json
+      description: User Me
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+      security:
+      - ApiKeyAuth: []
+      summary: User Me
+      tags:
+      - User
+  /api/v1/user/sign-in:
+    post:
+      consumes:
+      - application/json
+      description: Admin Sign In  User.
+      parameters:
+      - description: Sign In
+        in: body
+        name: signup
+        required: true
+        schema:
+          $ref: '#/definitions/model.SignInUser'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+      summary: Admin Sign In User
+      tags:
+      - User
+  /api/v1/user/super-admin/create:
+    post:
+      consumes:
+      - application/json
+      description: Create Super Admin
+      parameters:
+      - description: Create Super Admin
+        in: query
+        name: token
+        required: true
+        type: string
+      - description: Create Super Admin
+        in: body
+        name: create
+        required: true
+        schema:
+          $ref: '#/definitions/model.CreateUser'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+      security:
+      - ApiKeyAuth: []
+      summary: Create Super Admin
+      tags:
+      - SuperAdmin
+  /api/v1/user/update-password/{id}:
+    put:
+      consumes:
+      - application/json
+      description: Update User Password
+      parameters:
+      - description: User ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: password
+        in: body
+        name: password
+        required: true
+        schema:
+          $ref: '#/definitions/model.UserPassword'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+      security:
+      - ApiKeyAuth: []
+      summary: Update User Password
+      tags:
+      - User
+  /api/v1/user/update/{id}:
+    put:
+      consumes:
+      - application/json
+      description: Update User
+      parameters:
+      - description: User ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Update User
+        in: body
+        name: update
+        required: true
+        schema:
+          $ref: '#/definitions/model.UpdateUser'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.ResponseModel'
+      security:
+      - ApiKeyAuth: []
+      summary: Update User
+      tags:
+      - User
+securityDefinitions:
+  ApiKeyAuth:
+    in: header
+    name: Authorization
+    type: apiKey
+swagger: "2.0"

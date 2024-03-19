@@ -1,0 +1,6 @@
+.vscode
+.env
+.idea
+vendor
+logs
+data_model.json
